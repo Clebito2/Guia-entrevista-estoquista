@@ -168,14 +168,45 @@
         }
         tbody tr:nth-child(odd) { background-color: rgba(0, 0, 0, 0.1); }
         
-        /* CORREÇÃO ADICIONADA: Alinhar todas as células da tabela ao topo */
+        /* --- Correções para a Tabela de Avaliação --- */
+
+        /* Remova ou comente as regras existentes de alinhamento e padding para a .ficha-table */
         .ficha-table tbody td {
-            vertical-align: top;
-            padding-top: 1rem; /* Adiciona padding uniforme */
-            padding-bottom: 1rem;
+            vertical-align: top; /* Alinha tudo ao topo para consistência */
+            padding: 1rem; /* Padding uniforme em todas as direções */
         }
+
+        /* Ajuste específico para células com rowspan (categorias) */
         .ficha-table td[rowspan] {
-            padding-top: 1.25rem; /* Mantém o ajuste para o título da categoria */
+            padding: 1rem; /* Uniformiza com as outras células, removendo o 1.25rem */
+            font-weight: bold; /* Mantém o destaque, se necessário */
+        }
+
+        /* Ajustes para a coluna de notas (terceira coluna) */
+        .ficha-table td:nth-child(3) {
+            width: 100px;
+            text-align: center;
+            vertical-align: top; /* Muda de middle para top, para alinhar com o topo da linha */
+            padding: 1rem; /* Uniforme */
+        }
+
+        /* Adicione um estilo para os inputs de nota, para centralizá-los visualmente */
+        .ficha-table input[type="number"] {
+            display: block; /* Torna o input um bloco para melhor controle */
+            margin: 0 auto; /* Centraliza horizontalmente */
+            padding: 0.5rem; /* Reduz padding interno para melhor encaixe */
+            width: 60px; /* Largura fixa para consistência */
+            text-align: center;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        /* Opcional: Adicione uma margem superior aos inputs para simular centralização vertical se as células forem altas */
+        .ficha-table td:nth-child(3) input[type="number"] {
+            margin-top: 0.5rem; /* Ajuste este valor conforme necessário para centralizar visualmente */
         }
         
         /* --- 7. Estilos do Formulário Interativo --- */
