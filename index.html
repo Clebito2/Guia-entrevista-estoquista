@@ -168,10 +168,14 @@
         }
         tbody tr:nth-child(odd) { background-color: rgba(0, 0, 0, 0.1); }
         
-        /* CORREÇÃO ADICIONADA: Alinhar conteúdo de células com rowspan ao topo */
-        .ficha-table td[rowspan] {
+        /* CORREÇÃO ADICIONADA: Alinhar todas as células da tabela ao topo */
+        .ficha-table tbody td {
             vertical-align: top;
-            padding-top: 1.25rem; /* Ajustado para melhor alinhamento */
+            padding-top: 1rem; /* Adiciona padding uniforme */
+            padding-bottom: 1rem;
+        }
+        .ficha-table td[rowspan] {
+            padding-top: 1.25rem; /* Mantém o ajuste para o título da categoria */
         }
         
         /* --- 7. Estilos do Formulário Interativo --- */
