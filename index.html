@@ -94,9 +94,14 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .js .fade-in { opacity: 0; }
+        /* .js .fade-in { opacity: 0; } */ /* <-- PROBLEMA REMOVIDO */
         .fade-in.is-visible { animation: fadeIn 0.8s ease-out forwards; }
         
+        /* Garantia de visibilidade */
+        .fade-in {
+            opacity: 1;
+        }
+
         /* --- 6. Estilos de Conteúdo Específico (Esta Página) --- */
         .hero-section { text-align: center; padding-bottom: 0; }
         h1 {
@@ -588,7 +593,9 @@
                 });
 
                 const targets = document.querySelectorAll('.fade-in');
+                 // Garantir que os alvos sejam visíveis mesmo se o observer falhar
                 targets.forEach(target => {
+                    target.style.opacity = 1; // <-- CORREÇÃO ADICIONADA
                     observer.observe(target);
                 });
             }
