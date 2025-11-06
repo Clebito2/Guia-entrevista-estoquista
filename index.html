@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RH Casa Goianita | Guia de Entrevista | Estoquista</title>
+    
+    <!-- 1. Fontes (Padrão V3) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght @AppData\Local\Google\Chrome\User Data\Default\Local Storage\leveldb\000418.log,400;1,700&family=Poppins:wght @AppData\Local\Google\Chrome\User Data\Default\Cache\Cache_Data\f_007300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Script de detecção de JS para animação segura -->
+    <script>document.documentElement.className = 'js';</script>
+
+    <style>
+        /* --- 1. Núcleo da Identidade Visual (Tokens) --- */
+        :root {
+            --primary-bg: #06192a;
+            --card-bg: #0A243D;
+            --accent-color: #00e800;
+            --danger-color: #ff4d4d;
+            --text-primary: #ffffff;
+            --text-muted: #cccccc;
+            --text-subtle: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-glow: 0 0 8px rgba(0, 232, 0, 0.7);
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+            --font-size-base: 1.1rem;
+            --font-size-h3: 1.5rem;
+            --font-size-h2: clamp(2rem, 4vw, 2.5rem);
+            --font-size-h1: clamp(2.5rem, 5vw, 3rem);
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+        }
+
+        /* --- 2. Estrutura e Layout (Padrão V3) --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-primary);
+            background-color: var(--primary-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        /* --- 3. Ativos da Marca (Logos) --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: var(--space-sm) var(--space-md);
+            background-color: rgba(6, 25, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-logo { height: 48px; }
+        .header-title { font-size: 1rem; font-weight: 600; color: var(--text-muted); }
+        main { padding-top: calc(48px + (var(--space-sm) * 2)); padding-bottom: var(--space-lg); }
+        footer {
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+            background-color: #000;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer-logo { height: 96px; margin-bottom: var(--space-sm); }
+        footer p { color: var(--text-subtle); font-size: 0.9rem; }
+
+        /* --- 4. Componentes (Card Padrão V3) --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 var(--space-md); }
+        section { padding-top: var(--space-lg); }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: var(--space-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .card:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 4px; }
+
+        /* --- 5. Animações (Padrão V3) --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .js .fade-in { opacity: 0; }
+        .fade-in.is-visible { animation: fadeIn 0.8s ease-out forwards; }
+        
+        /* --- 6. Estilos de Conteúdo Específico (Esta Página) --- */
+        .hero-section { text-align: center; padding-bottom: 0; }
+        h1 {
+            font-size: var(--font-size-h1);
+            color: var(--accent-color);
+            text-shadow: var(--accent-glow);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        h2 {
+            font-size: var(--font-size-h2);
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .hero-section p {
+            font-size: var(--font-size-base);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h3 {
+            font-size: var(--font-size-h3);
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            margin-top: var(--space-md);
+        }
+        h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+        p { color: var(--text-muted); margin-bottom: 1rem; }
+        
+        /* Tabela */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            color: var(--text-subtle);
+            word-wrap: break-word;
+        }
+        th {
+            background-color: rgba(0, 232, 0, 0.1);
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        tbody tr:nth-child(odd) { background-color: rgba(0, 0, 0, 0.1); }
+        
+        /* --- 7. Estilos do Formulário Interativo --- */
+        .form-section {
+            margin-top: var(--space-lg);
+        }
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        .form-group label {
+            display: block;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+        .form-group label span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-subtle);
+            display: block;
+            line-height: 1.4;
+        }
+        .form-group textarea,
+        .form-group input[type="text"] {
+            width: 100%;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .form-group input[type="number"] {
+            width: 80px;
+            text-align: center;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            -moz-appearance: textfield; /* Firefox */
+        }
+        .form-group input[type="number"]::-webkit-outer-spin-button,
+        .form-group input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .ficha-table td:nth-child(3) { /* Coluna da Nota */
+            width: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .radio-group { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: var(--space-md); 
+            margin-top: var(--space-sm);
+        }
+        .radio-label { 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .radio-label input { 
+            margin-right: 10px; 
+            accent-color: var(--accent-color);
+            width: 1.2em;
+            height: 1.2em;
+        }
+        .submit-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: var(--space-md);
+        }
+        .submit-button:hover {
+            box-shadow: var(--accent-glow);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho (Padrão V3 - Proposta) -->
+    <header>
+        <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-36.png" 
+             alt="Logo Live Consultoria" 
+             class="header-logo" 
+             loading="lazy">
+        <span class="header-title">Projeto Casa Goianita</span>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <!-- Seção Hero -->
+            <section class="hero-section fade-in">
+                <h1>RH Casa Goianita</h1>
+                <h2>Guia Interativo de Entrevista: Estoquista</h2>
+                <p>O Estoquista é o guardião da qualidade e da eficiência. Este guia foca em identificar candidatos com organização, disciplina e atenção aos detalhes, alinhados aos princípios 5S.</p>
+            </section>
+
+            <!-- Início do Formulário Interativo -->
+            <form id="interview-form">
+
+                <!-- Seção Fase 1: Preparação (Estática) -->
+                <section id="fase1" class="fade-in">
+                    <h3>FASE 1: PREPARAÇÃO (O Alicerce da Entrevista)</h3>
+                    <div class="card">
+                        <p>A preparação adequada garante que todos os candidatos sejam avaliados de forma justa e comparável, minimizando vieses inconscientes.</p>
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ação Detalhada</th>
+                                        <th>Objetivo e Referência Pedagógica</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>1. Análise do Perfil Ideal</strong></td>
+                                        <td>O estoquista ideal deve ter alta aderência a perfis que valorizam processos, detalhes e segurança. Busque traços de: <strong>Prudência (HPI)</strong> (organizado, seguidor de regras) e <strong>Conformidade (DISC)</strong> (analítico, perfeccionista).</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>2. Preparação das Ferramentas</strong></td>
+                                        <td>Imprima a Ficha de Avaliação (Fase 3). Reserve uma sala sem interrupções e prepare o ambiente.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>3. Seleção de Perguntas-Chave</strong></td>
+                                        <td>Para garantir a consistência, selecione exatamente as mesmas 5-7 perguntas comportamentais (Bloco 3) que serão feitas a todos.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>4. Alinhamento de Expectativas</strong></td>
+                                        <td>Tenha clareza sobre os requisitos obrigatórios e os diferenciais, como experiência com coletas de dados, inventário ou uso de empilhadeiras.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Fase 2: Condução (Formulário Interativo) -->
+                <section id="fase2" class="fade-in form-section">
+                    <h3>FASE 2: CONDUÇÃO (O Diálogo Estruturado)</h3>
+                    <div class="card">
+                        
+                        <div class="form-group">
+                            <label for="candidato_nome">Nome do Candidato:</label>
+                            <input type="text" id="candidato_nome" name="candidato_nome" required placeholder="Digite o nome completo do candidato">
+                        </div>
+                        
+                        <hr style="border-color: var(--border-color); margin: var(--space-md) 0;">
+
+                        <h4>BLOCO 1: Abertura e Motivação (5-10 min)</h4>
+                        
+                        <div class="form-group">
+                            <label for="q1">1. Fale-me um pouco sobre sua trajetória profissional, focando em suas experiências com gestão de materiais e organização.
+                                <span><strong>Objetivo:</strong> Avaliar a clareza e a capacidade de síntese.</span>
+                            </label>
+                            <textarea id="q1" name="resp_q1" placeholder="Anote a resposta do candidato aqui..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="q2">2. O que te atraiu especificamente a esta vaga de Estoquista?
+                                <span><strong>Objetivo:</strong> Avaliar o interesse genuíno pela função.</span>
+                            </label>
+                            <textarea id="q2" name="resp_q2" placeholder="Anote a resposta do candidato aqui..."></textarea>
+                        </div>
+
+                        <h4>BLOCO 2: Experiências Anteriores e Rotina (10-15 min)</h4>
+
+                        <div class="form-group">
+                            <label for="q3">3. Descreva seu dia a dia em seu último emprego de estoque. Quais eram suas principais responsabilidades, além de apenas guardar materiais?
+                                <span><strong>Objetivo:</strong> Entender a familiaridade com recebimento, conferência, separação (picking) e inventário.</span>
+                            </label>
+                            <textarea id="q3" name="resp_q3" placeholder="Anote a resposta do candidato aqui..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="q4">4. Qual era o sistema (ou método) que você utilizava para garantir que um produto fosse facilmente localizado por qualquer pessoa da equipe?
+                                <span><strong>Foco no 5S (Seiton/Ordenação):</strong> Avaliar experiência com endereçamento, identificação visual, etc.</span>
+                            </label>
+                            <textarea id="q4" name="resp_q4" placeholder="Anote a resposta do candidato aqui..."></textarea>
+                        </div>
+
+                        <h4>BLOCO 3: Competências Comportamentais (Técnica STAR) (20-25 min)</h4>
+                        <p>Instrução: Use a técnica STAR (Situação, Tarefa, Ação, Resultado) para extrair exemplos concretos.</p>
+
+                        <div class="form-group">
+                            <label for="q_detalhes">5. (Atenção aos Detalhes) Fale sobre uma vez em que sua atenção aos detalhes foi essencial para evitar um erro grave (como produto errado ou vencido) no estoque.
+                                <span><strong>Observar:</strong> Rigor com prazos de validade, prevenção de avarias.</span>
+                            </label>
+                            <textarea id="q_detalhes" name="resp_q_detalhes" placeholder="Anote a situação descrita..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="q_utilizacao">6. (Utilização/Seiri) Conte-me sobre uma ocasião em que você identificou excesso de materiais ou equipamentos sem uso no depósito. Qual foi a sua ação?
+                                <span><strong>Observar:</strong> Proatividade em liberar espaço, identificar itens de baixo giro.</span>
+                            </label>
+                            <textarea id="q_utilizacao" name="resp_q_utilizacao" placeholder="Anote a situação descrita..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="q_disciplina">7. (Disciplina/Shitsuke) Descreva um momento em que foi solicitado que você seguisse um novo padrão de organização ou uma regra de segurança que você não concordava totalmente. Como você lidou com isso?
+                                <span><strong>Observar:</strong> Capacidade de entender e respeitar regras e padrões.</span>
+                            </label>
+                            <textarea id="q_disciplina" name="resp_q_disciplina" placeholder="Anote a situação descrita..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="q_organizacao">8. (Organização/Seiton) Fale sobre um dia em que o depósito estava extremamente desorganizado. Qual foi a sua primeira ação para resolver o problema?
+                                <span><strong>Observar:</strong> Habilidade de planejar, priorizar e aplicar métodos de organização.</span>
+                            </label>
+                            <textarea id="q_organizacao" name="resp_q_organizacao" placeholder="Anote a situação descrita..."></textarea>
+                        </div>
+
+                        <h4>BLOCO 4: Role Play e Encerramento (10-15 min)</h4>
+
+                        <div class="form-group">
+                            <label for="q_roleplay">9. (Simulação/Role Play) "Eu sou seu colega impaciente, procurando o 'Aparelho de Jantar XPTO' que sei que chegou ontem, mas não está no local de costume. Como você me ajudaria a encontrá-lo, garantindo que eu saiba onde procurar da próxima vez?"
+                                <span><strong>Observar:</strong> Habilidade de comunicação interna, calma sob pressão, uso prático da organização.</span>
+                            </label>
+                            <textarea id="q_roleplay" name="resp_q_roleplay" placeholder="Anote como o candidato reagiu e resolveu a simulação..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="q_duvidas">10. Você tem alguma pergunta para mim sobre a vaga, a equipe ou a empresa?
+                                <span><strong>Observar:</strong> Interesse e preparação. Boas perguntas indicam interesse em metas e no ambiente.</span>
+                            </label>
+                            <textarea id="q_duvidas" name="resp_q_duvidas" placeholder="Anote as perguntas feitas pelo candidato..."></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Fase 3: Avaliação (Formulário Interativo) -->
+                <section id="fase3" class="fade-in form-section">
+                    <h3>FASE 3: AVALIAÇÃO (Ficha de Avaliação)</h3>
+                    <div class="card">
+                        <p>Preencha esta ficha imediatamente após a saída do candidato. Use uma escala de 1 a 5 para pontuação, onde 1 é Insatisfatório e 5 é Excepcional.</p>
+                        
+                        <div style="overflow-x: auto;">
+                            <table class="ficha-table">
+                                <thead>
+                                    <tr>
+                                        <th>Categoria/Competência (Peso)</th>
+                                        <th>Foco do Estoquista (Pontos a Avaliar)</th>
+                                        <th>Nota (/5)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="5"><strong>Comportamentais (50%)</strong></td>
+                                        <td>1. Organização/Seiton: Capacidade de estruturar o ambiente e localizar itens.</td>
+                                        <td><input type="number" name="nota_org" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2. Atenção aos Detalhes: Precisão na contagem, conferência e identificação de avarias.</td>
+                                        <td><input type="number" name="nota_detalhes" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3. Disciplina/Ética (Shitsuke): Aderência a regras de segurança (EPIs) e padrões.</td>
+                                        <td><input type="number" name="nota_disciplina" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4. Proatividade (Seiri): Iniciativa para gerenciar materiais desnecessários.</td>
+                                        <td><input type="number" name="nota_proatividade" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5. Resiliência: Capacidade de manter a calma e a precisão sob pressão.</td>
+                                        <td><input type="number" name="nota_resiliencia" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2"><strong>Técnicas (30%)</strong></td>
+                                        <td>6. Experiência em Estoque/Logística: Conhecimento de recebimento, conferência, sistemas.</td>
+                                        <td><input type="number" name="nota_exp" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7. Conhecimento 5S (Prático): Demonstração de valorização da Utilização e Limpeza.</td>
+                                        <td><input type="number" name="nota_5s" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2"><strong>Alinhamento (20%)</strong></td>
+                                        <td>8. Motivação e Fit Cultural: Alinhamento com os valores da empresa.</td>
+                                        <td><input type="number" name="nota_fit" min="1" max="5"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9. Coachability (Aprendizado): Capacidade de absorver feedback.</td>
+                                        <td><input type="number" name="nota_coachability" min="1" max="5"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <hr style="border-color: var(--border-color); margin: var(--space-md) 0;">
+
+                        <h4>Parecer do Entrevistador</h4>
+
+                        <div class="form-group">
+                            <label for="pontos_fortes">Pontos Fortes Observados:</label>
+                            <textarea id="pontos_fortes" name="parecer_fortes" placeholder="Ex: Foco claro em organização, deu exemplos concretos de uso de etiquetas para locação, perfil Prudente..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pontos_atencao">Pontos de Atenção (Red Flags):</label>
+                            <textarea id="pontos_atencao" name="parecer_atencao" placeholder="Ex: Demonstrou pouca resiliência ao falar de estresse, não conseguiu explicar um sistema de rastreamento..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parecer Final:</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="parecer_final" value="Aprovado para a Próxima Etapa (Gestor)" checked>
+                                    Aprovado para a Próxima Etapa (Gestor)
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="parecer_final" value="Aprovado com Ressalvas">
+                                    Aprovado com Ressalvas
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="parecer_final" value="Reprovado">
+                                    Reprovado
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="parecer_final" value="Manter em Banco de Talentos">
+                                    Manter em Banco de Talentos
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção Etapa Prática (Estática) -->
+                <section id="etapa_pratica" class="fade-in">
+                    <h3>Etapa Prática (Recomendada para Aprovados)</h3>
+                    <div class="card">
+                        <p>Para os candidatos mais promissores (com parecer "Aprovado"), recomenda-se uma etapa prática com o Gestor da área para avaliar o <strong>Coachability</strong> (capacidade de aprendizado).</p>
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ação Recomendada</th>
+                                        <th>Justificativa no Contexto do Estoquista</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Simulação de Conferência</strong></td>
+                                        <td>Apresente um cenário onde a nota fiscal (XML) e os produtos físicos não batem (divergência). Peça para o candidato descrever como faria a inspeção e registro.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Teste de Organização (Seiton)</strong></td>
+                                        <td>Apresente um pequeno conjunto de materiais desorganizados e peça para o candidato criar um sistema rápido para que outro colega possa localizar os itens facilmente.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Avaliação de Coachability</strong></td>
+                                        <td>Dê um feedback pontual sobre a simulação (ex: "Sua organização está boa, mas tente criar um padrão de cores para os corredores..."). A rapidez em aplicar o novo padrão é uma métrica crucial.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Botão de Submissão -->
+                <button type="submit" class="submit-button fade-in">
+                    <i class="fa-solid fa-download"></i> Gerar Documento de Avaliação (.txt)
+                </button>
+
+            </form>
+            <!-- Fim do Formulário Interativo -->
+
+        </div>
+    </main>
+
+    <!-- Rodapé (Padrão V3 - Proposta) -->
+    <footer>
+        <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-34.png" 
+             alt="Live Consultoria" 
+             class="footer-logo" 
+             loading="lazy"
+             onerror="this.onerror=null; this.src='https://placehold.co/96x96/000000/a0a0a0?text=Live+Logo'">
+        <p>Live Consultoria Empresarial</p>
+        <p>Transformando Potencial em Performance.</p>
+    </footer>
+
+    <!-- Scripts da Página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Script de Animação Fade-in (Padrão V3) ---
+            if (document.documentElement.classList.contains('js')) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1 // Ativa quando 10% do elemento está visível
+                });
+
+                const targets = document.querySelectorAll('.fade-in');
+                targets.forEach(target => {
+                    observer.observe(target);
+                });
+            }
+            
+            // --- Script do Formulário Interativo ---
+            const form = document.getElementById('interview-form');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Impedir o envio real do formulário
+
+                    try {
+                        const formData = new FormData(form);
+                        const data = Object.fromEntries(formData.entries());
+                        
+                        // Helper para formatar seções
+                        const f = (label, key) => {
+                            if (data[key] && data[key].trim() !== '') {
+                                return `${label}:\n${data[key].trim()}\n\n`;
+                            }
+                            return `${label}:\n(Não preenchido)\n\n`;
+                        };
+
+                        // Helper para formatar notas
+                        const fNota = (label, key) => {
+                            if (data[key] && data[key].trim() !== '') {
+                                return `- ${label}: ${data[key]}/5\n`;
+                            }
+                            return `- ${label}: (Não avaliado)\n`;
+                        }
+
+                        // 1. Iniciar a construção do documento de texto
+                        let docContent = "FICHA DE AVALIAÇÃO DE ENTREVISTA - ESTOQUISTA\n";
+                        docContent += "===============================================\n\n";
+                        docContent += f("CANDIDATO", "candidato_nome");
+                        
+                        docContent += "FASE 2: ANOTAÇÕES DA CONDUÇÃO DA ENTREVISTA\n";
+                        docContent += "-----------------------------------------------\n\n";
+                        
+                        // Bloco 1
+                        docContent += "BLOCO 1: Abertura e Motivação\n";
+                        docContent += f("1. Trajetória Profissional", "resp_q1");
+                        docContent += f("2. Atração pela Vaga", "resp_q2");
+                        
+                        // Bloco 2
+                        docContent += "BLOCO 2: Experiências Anteriores\n";
+                        docContent += f("3. Dia a dia e Responsabilidades", "resp_q3");
+                        docContent += f("4. Sistema de Localização (Seiton)", "resp_q4");
+                        
+                        // Bloco 3
+                        docContent += "BLOCO 3: Competências Comportamentais (STAR)\n";
+                        docContent += f("5. Atenção aos Detalhes", "resp_q_detalhes");
+                        docContent += f("6. Utilização / Desperdício (Seiri)", "resp_q_utilizacao");
+                        docContent += f("7. Disciplina / Conformidade (Shitsuke)", "resp_q_disciplina");
+                        docContent += f("8. Organização / Resolução (Seiton)", "resp_q_organizacao");
+                        
+                        // Bloco 4
+                        docContent += "BLOCO 4: Role Play e Encerramento\n";
+                        docContent += f("9. Simulação (Colega Impaciente)", "resp_q_roleplay");
+                        docContent += f("10. Dúvidas do Candidato", "resp_q_duvidas");
+
+                        // 2. Adicionar Ficha de Avaliação (Notas)
+                        docContent += "\nFASE 3: FICHA DE AVALIAÇÃO (NOTAS)\n";
+                        docContent += "-----------------------------------------------\n\n";
+                        
+                        docContent += "COMPETÊNCIAS COMPORTAMENTAIS (50%):\n";
+                        docContent += fNota("Organização/Seiton", "nota_org");
+                        docContent += fNota("Atenção aos Detalhes", "nota_detalhes");
+                        docContent += fNota("Disciplina/Ética (Shitsuke)", "nota_disciplina");
+                        docContent += fNota("Proatividade (Seiri)", "nota_proatividade");
+                        docContent += fNota("Resiliência", "nota_resiliencia");
+                        docContent += "\n";
+                        
+                        docContent += "COMPETÊNCIAS TÉCNICAS (30%):\n";
+                        docContent += fNota("Experiência em Estoque/Logística", "nota_exp");
+                        docContent += fNota("Conhecimento 5S (Prático)", "nota_5s");
+                        docContent += "\n";
+                        
+                        docContent += "ALINHAMENTO E POTENCIAL (20%):\n";
+                        docContent += fNota("Motivação e Fit Cultural", "nota_fit");
+                        docContent += fNota("Coachability (Aprendizado)", "nota_coachability");
+                        docContent += "\n\n";
+
+                        // 3. Adicionar Parecer Final
+                        docContent += "PARECER DO ENTREVISTADOR\n";
+                        docContent += "-----------------------------------------------\n\n";
+                        docContent += f("PONTOS FORTES OBSERVADOS", "parecer_fortes");
+                        docContent += f("PONTOS DE ATENÇÃO (RED FLAGS)", "parecer_atencao");
+                        docContent += f("PARECER FINAL", "parecer_final");
+
+                        // 4. Criar e Baixar o Arquivo .txt
+                        const blob = new Blob([docContent], { type: 'text/plain;charset=utf-8' });
+                        const link = document.createElement('a');
+                        
+                        let candidatoNome = "avaliacao_estoquista";
+                        if (data.candidato_nome && data.candidato_nome.trim() !== "") {
+                            candidatoNome = data.candidato_nome.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                        }
+                        
+                        link.href = URL.createObjectURL(blob);
+                        link.download = `Avaliacao_${candidatoNome}.txt`;
+                        
+                        // Adiciona, clica e remove o link
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                    } catch (error) {
+                        console.error("Erro ao gerar o documento:", error);
+                        // Em um app real, usaríamos um modal aqui
+                        alert("Ocorreu um erro ao tentar gerar o documento.");
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
