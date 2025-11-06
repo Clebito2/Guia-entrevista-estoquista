@@ -8,7 +8,7 @@
     <!-- 1. Fontes (Padrão V3) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght @AppData\Local\Google\Chrome\User Data\Default\Local Storage\leveldb\000418.log,400;1,700&family=Poppins:wght @AppData\Local\Google\Chrome\User Data\Default\Cache\Cache_Data\f_007300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght @AppData\Local\Google\Chrome\User Data\Default\IndexedDB\chrome-extension_ejhkmnhjkbekmfohoipicmpmjdbofdhm_0.indexeddb.leveldb\000523.log,400;1,700&family=Poppins:wght @AppData\Local\Google\Chrome\User Data\Default\Code Cache\js\955dcee75300b126_0;400;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -163,6 +163,12 @@
         }
         tbody tr:nth-child(odd) { background-color: rgba(0, 0, 0, 0.1); }
         
+        /* CORREÇÃO ADICIONADA: Alinhar conteúdo de células com rowspan ao topo */
+        .ficha-table td[rowspan] {
+            vertical-align: top;
+            padding-top: 1.25rem; /* Ajustado para melhor alinhamento */
+        }
+        
         /* --- 7. Estilos do Formulário Interativo --- */
         .form-section {
             margin-top: var(--space-lg);
@@ -267,7 +273,8 @@
         <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-36.png" 
              alt="Logo Live Consultoria" 
              class="header-logo" 
-             loading="lazy">
+             loading="lazy"
+             onerror="this.onerror=null; this.src='https://placehold.co/150x48/06192a/a0a0a0?text=Live+Logo'">
         <span class="header-title">Projeto Casa Goianita</span>
     </header>
 
@@ -618,7 +625,8 @@
                         docContent += f("CANDIDATO", "candidato_nome");
                         
                         docContent += "FASE 2: ANOTAÇÕES DA CONDUÇÃO DA ENTREVISTA\n";
-                        docContent += "-----------------------------------------------\n\n";
+                        docContent += "-----------------------------------------------
+\n";
                         
                         // Bloco 1
                         docContent += "BLOCO 1: Abertura e Motivação\n";
@@ -644,7 +652,8 @@
 
                         // 2. Adicionar Ficha de Avaliação (Notas)
                         docContent += "\nFASE 3: FICHA DE AVALIAÇÃO (NOTAS)\n";
-                        docContent += "-----------------------------------------------\n\n";
+                        docContent += "-----------------------------------------------
+\n";
                         
                         docContent += "COMPETÊNCIAS COMPORTAMENTAIS (50%):\n";
                         docContent += fNota("Organização/Seiton", "nota_org");
@@ -666,7 +675,8 @@
 
                         // 3. Adicionar Parecer Final
                         docContent += "PARECER DO ENTREVISTADOR\n";
-                        docContent += "-----------------------------------------------\n\n";
+                        docContent += "-----------------------------------------------
+\n";
                         docContent += f("PONTOS FORTES OBSERVADOS", "parecer_fortes");
                         docContent += f("PONTOS DE ATENÇÃO (RED FLAGS)", "parecer_atencao");
                         docContent += f("PARECER FINAL", "parecer_final");
