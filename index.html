@@ -590,7 +590,7 @@
                 </section>
                 
                 <!-- Botão de Submissão -->
-                <button type="submit" class="submit-button fade-in">
+                <button type="button" id="generate-btn" class="submit-button fade-in">
                     <i class="fa-solid fa-download"></i> Gerar Documento de Avaliação (.txt)
                 </button>
 
@@ -611,143 +611,138 @@
         <p>Transformando Potencial em Performance.</p>
     </footer>
 
-    <!-- Scripts da Página -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Script de Animação Fade-in (Padrão V3) ---
-            if (document.documentElement.classList.contains('js')) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1 // Ativa quando 10% do elemento está visível
-                });
+    // --- Script de Animação Fade-in (Padrão V3) ---
+    if (document.documentElement.classList.contains('js')) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        const targets = document.querySelectorAll('.fade-in');
+        targets.forEach(target => {
+            target.style.opacity = 1;
+            observer.observe(target);
+        });
+    }
 
-                const targets = document.querySelectorAll('.fade-in');
-                 // Garantir que os alvos sejam visíveis mesmo se o observer falhar
-                targets.forEach(target => {
-                    target.style.opacity = 1; // <-- CORREÇÃO ADICIONADA
-                    observer.observe(target);
-                });
-            }
-            
-            // --- Script do Formulário Interativo ---
-            const form = document.getElementById('interview-form');
-            if (form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault(); // Impedir o envio real do formulário
+    // --- Script para Geração do Documento ---
+    const form = document.getElementById('interview-form');
+    const generateBtn = document.getElementById('generate-btn');
 
-                    try {
-                        const formData = new FormData(form);
-                        const data = Object.fromEntries(formData.entries());
-                        
-                        // Helper para formatar seções
-                        const f = (label, key) => {
-                            if (data[key] && data[key].trim() !== '') {
-                                return `${label}:\n${data[key].trim()}\n\n`;
-                            }
-                            return `${label}:\n(Não preenchido)\n\n`;
-                        };
+    if (form && generateBtn) {
+        generateBtn.addEventListener('click', function() {
+            try {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
 
-                        // Helper para formatar notas
-                        const fNota = (label, key) => {
-                            if (data[key] && data[key].trim() !== '') {
-                                return `- ${label}: ${data[key]}/5\n`;
-                            }
-                            return `- ${label}: (Não avaliado)\n`;
-                        }
+                // Validação opcional: Verifique campos obrigatórios (exemplo: nome do candidato)
+                if (!data.candidato_nome || data.candidato_nome.trim() === '') {
+                    alert('Por favor, preencha o nome do candidato antes de gerar o documento.');
+                    return;
+                }
 
-                        // 1. Iniciar a construção do documento de texto
-                        let docContent = "FICHA DE AVALIAÇÃO DE ENTREVISTA - ESTOQUISTA\n";
-                        docContent += "===============================================\n\n";
-                        docContent += f("CANDIDATO", "candidato_nome");
-                        
-                        docContent += "FASE 2: ANOTAÇÕES DA CONDUÇÃO DA ENTREVISTA\n";
-                        docContent += "-----------------------------------------------
-\n";
-                        
-                        // Bloco 1
-                        docContent += "BLOCO 1: Abertura e Motivação\n";
-                        docContent += f("1. Trajetória Profissional", "resp_q1");
-                        docContent += f("2. Atração pela Vaga", "resp_q2");
-                        
-                        // Bloco 2
-                        docContent += "BLOCO 2: Experiências Anteriores\n";
-                        docContent += f("3. Dia a dia e Responsabilidades", "resp_q3");
-                        docContent += f("4. Sistema de Localização (Seiton)", "resp_q4");
-                        
-                        // Bloco 3
-                        docContent += "BLOCO 3: Competências Comportamentais (STAR)\n";
-                        docContent += f("5. Atenção aos Detalhes", "resp_q_detalhes");
-                        docContent += f("6. Utilização / Desperdício (Seiri)", "resp_q_utilizacao");
-                        docContent += f("7. Disciplina / Conformidade (Shitsuke)", "resp_q_disciplina");
-                        docContent += f("8. Organização / Resolução (Seiton)", "resp_q_organizacao");
-                        
-                        // Bloco 4
-                        docContent += "BLOCO 4: Role Play e Encerramento\n";
-                        docContent += f("9. Simulação (Colega Impaciente)", "resp_q_roleplay");
-                        docContent += f("10. Dúvidas do Candidato", "resp_q_duvidas");
-
-                        // 2. Adicionar Ficha de Avaliação (Notas)
-                        docContent += "\nFASE 3: FICHA DE AVALIAÇÃO (NOTAS)\n";
-                        docContent += "-----------------------------------------------
-\n";
-                        
-                        docContent += "COMPETÊNCIAS COMPORTAMENTAIS (50%):\n";
-                        docContent += fNota("Organização/Seiton", "nota_org");
-                        docContent += fNota("Atenção aos Detalhes", "nota_detalhes");
-                        docContent += fNota("Disciplina/Ética (Shitsuke)", "nota_disciplina");
-                        docContent += fNota("Proatividade (Seiri)", "nota_proatividade");
-                        docContent += fNota("Resiliência", "nota_resiliencia");
-                        docContent += "\n";
-                        
-                        docContent += "COMPETÊNCIAS TÉCNICAS (30%):\n";
-                        docContent += fNota("Experiência em Estoque/Logística", "nota_exp");
-                        docContent += fNota("Conhecimento 5S (Prático)", "nota_5s");
-                        docContent += "\n";
-                        
-                        docContent += "ALINHAMENTO E POTENCIAL (20%):\n";
-                        docContent += fNota("Motivação e Fit Cultural", "nota_fit");
-                        docContent += fNota("Coachability (Aprendizado)", "nota_coachability");
-                        docContent += "\n\n";
-
-                        // 3. Adicionar Parecer Final
-                        docContent += "PARECER DO ENTREVISTADOR\n";
-                        docContent += "-----------------------------------------------
-\n";
-                        docContent += f("PONTOS FORTES OBSERVADOS", "parecer_fortes");
-                        docContent += f("PONTOS DE ATENÇÃO (RED FLAGS)", "parecer_atencao");
-                        docContent += f("PARECER FINAL", "parecer_final");
-
-                        // 4. Criar e Baixar o Arquivo .txt
-                        const blob = new Blob([docContent], { type: 'text/plain;charset=utf-8' });
-                        const link = document.createElement('a');
-                        
-                        let candidatoNome = "avaliacao_estoquista";
-                        if (data.candidato_nome && data.candidato_nome.trim() !== "") {
-                            candidatoNome = data.candidato_nome.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
-                        }
-                        
-                        link.href = URL.createObjectURL(blob);
-                        link.download = `Avaliacao_${candidatoNome}.txt`;
-                        
-                        // Adiciona, clica e remove o link
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-
-                    } catch (error) {
-                        console.error("Erro ao gerar o documento:", error);
-                        // Em um app real, usaríamos um modal aqui
-                        alert("Ocorreu um erro ao tentar gerar o documento.");
+                // Helper para formatar seções de texto
+                const f = (label, key) => {
+                    if (data[key] && data[key].trim() !== '') {
+                        return `${label}:\n${data[key].trim()}\n\n`;
                     }
-                });
+                    return `${label}:\n(Não preenchido)\n\n`;
+                };
+
+                // Helper para formatar notas
+                const fNota = (label, key) => {
+                    if (data[key] && data[key].trim() !== '') {
+                        return `- ${label}: ${data[key]}/5\n`;
+                    }
+                    return `- ${label}: (Não avaliado)\n`;
+                };
+
+                // Construção do conteúdo do documento
+                let docContent = "FICHA DE AVALIAÇÃO DE ENTREVISTA - ESTOQUISTA\n";
+                docContent += "===============================================\n\n";
+                docContent += f("CANDIDATO", "candidato_nome");
+
+                docContent += "FASE 2: ANOTAÇÕES DA CONDUÇÃO DA ENTREVISTA\n";
+                docContent += "-----------------------------------------------\n";
+
+                // Bloco 1
+                docContent += "BLOCO 1: Abertura e Motivação\n";
+                docContent += f("1. Trajetória Profissional", "resp_q1");
+                docContent += f("2. Atração pela Vaga", "resp_q2");
+
+                // Bloco 2
+                docContent += "BLOCO 2: Experiências Anteriores\n";
+                docContent += f("3. Dia a dia e Responsabilidades", "resp_q3");
+                docContent += f("4. Sistema de Localização (Seiton)", "resp_q4");
+
+                // Bloco 3
+                docContent += "BLOCO 3: Competências Comportamentais (STAR)\n";
+                docContent += f("5. Atenção aos Detalhes", "resp_q_detalhes");
+                docContent += f("6. Utilização / Desperdício (Seiri)", "resp_q_utilizacao");
+                docContent += f("7. Disciplina / Conformidade (Shitsuke)", "resp_q_disciplina");
+                docContent += f("8. Organização / Resolução (Seiton)", "resp_q_organizacao");
+
+                // Bloco 4
+                docContent += "BLOCO 4: Role Play e Encerramento\n";
+                docContent += f("9. Simulação (Colega Impaciente)", "resp_q_roleplay");
+                docContent += f("10. Dúvidas do Candidato", "resp_q_duvidas");
+
+                // Fase 3: Notas
+                docContent += "\nFASE 3: FICHA DE AVALIAÇÃO (NOTAS)\n";
+                docContent += "-----------------------------------------------\n";
+                docContent += "COMPETÊNCIAS COMPORTAMENTAIS (50%):\n";
+                docContent += fNota("Organização/Seiton", "nota_org");
+                docContent += fNota("Atenção aos Detalhes", "nota_detalhes");
+                docContent += fNota("Disciplina/Ética (Shitsuke)", "nota_disciplina");
+                docContent += fNota("Proatividade (Seiri)", "nota_proatividade");
+                docContent += fNota("Resiliência", "nota_resiliencia");
+                docContent += "\n";
+
+                docContent += "COMPETÊNCIAS TÉCNICAS (30%):\n";
+                docContent += fNota("Experiência em Estoque/Logística", "nota_exp");
+                docContent += fNota("Conhecimento 5S (Prático)", "nota_5s");
+                docContent += "\n";
+
+                docContent += "ALINHAMENTO E POTENCIAL (20%):\n";
+                docContent += fNota("Motivação e Fit Cultural", "nota_fit");
+                docContent += fNota("Coachability (Aprendizado)", "nota_coachability");
+                docContent += "\n\n";
+
+                // Parecer Final
+                docContent += "PARECER DO ENTREVISTADOR\n";
+                docContent += "-----------------------------------------------\n";
+                docContent += f("PONTOS FORTES OBSERVADOS", "parecer_fortes");
+                docContent += f("PONTOS DE ATENÇÃO (RED FLAGS)", "parecer_atencao");
+                docContent += f("PARECER FINAL", "parecer_final");
+
+                // Geração do arquivo .txt
+                const blob = new Blob([docContent], { type: 'text/plain;charset=utf-8' });
+                const link = document.createElement('a');
+                let candidatoNome = "avaliacao_estoquista";
+                if (data.candidato_nome && data.candidato_nome.trim() !== "") {
+                    candidatoNome = data.candidato_nome.trim().replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                }
+                link.href = URL.createObjectURL(blob);
+                link.download = `Avaliacao_${candidatoNome}.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Opcional: Feedback de sucesso
+                alert('Documento gerado com sucesso!');
+
+            } catch (error) {
+                console.error("Erro ao gerar o documento:", error);
+                alert("Ocorreu um erro ao tentar gerar o documento. Verifique o console para detalhes.");
             }
         });
+    }
+});
     </script>
 
 </body>
